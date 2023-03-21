@@ -23,7 +23,6 @@ public class Article {
     private String title;
     @Column
     private String content;
-
     @OneToMany(mappedBy = "article", cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Comment> comments = new ArrayList<>();
 

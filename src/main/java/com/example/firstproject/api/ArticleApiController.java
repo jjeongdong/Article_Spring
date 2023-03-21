@@ -74,4 +74,5 @@ public class ArticleApiController {
                 ResponseEntity.status(HttpStatus.OK).body(createdList) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
+
 }

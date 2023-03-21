@@ -9,15 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ChefTest {
 
-    @Autowired IngredientFactory ingredientFactory;
+    //@Autowired IngredientFactory ingredientFactory;
     @Autowired Chef chef;
 
 
     @Test
     void 돈가스_요리하기() {
         // 준비
-        //IngredientFactory ingredientFactory = new IngredientFactory();
-        //Chef chef = new Chef(ingredientFactory);
+        // IngredientFactory ingredientFactory = new IngredientFactory();
+        // Chef chef = new Chef(ingredientFactory);
         String menu = "돈가스";
         // 수행
         String food = chef.cook(menu);

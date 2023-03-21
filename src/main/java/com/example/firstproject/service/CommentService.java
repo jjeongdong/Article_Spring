@@ -1,10 +1,12 @@
 package com.example.firstproject.service;
 
+import com.example.firstproject.annotation.RunningTime;
 import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.repository.CommentRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class CommentService {
 
@@ -50,6 +53,10 @@ public class CommentService {
 
     @Transactional
     public CommentDto create(Long articleId, CommentDto dto) {
+
+//        log.info("입력값 => {}", articleId);
+//        log.info("입력값 => {}", dto);
+
         // 게시글 조회 및 예외 발생
         Article article = articleRepository.findById(articleId)
                 .orElseThrow(() -> new IllegalArgumentException("댓글 생성 실패!"));
@@ -62,6 +69,9 @@ public class CommentService {
 
         // DTO로 변경하여 반환
         return CommentDto.createCommentDto(created);
+//        CommentDto createdDto = CommentDto.createCommentDto(created);
+//        log.info("반환값 => {}", createdDto);
+//        return createdDto;
     }
 
     @Transactional
@@ -92,6 +102,9 @@ public class CommentService {
         // 삭제 댓글을 DTO로 반환
         return CommentDto.createCommentDto(target);
     }
+
+    // @RunningTime 어노테이션을 CommentApiController의 delete 메소드에 붙였을 때는 로그에 찍힌 반환값이 잘 나왔는데
+    // CommentService에 delete 메소드에 붙였을 때는 로그로 찍힌 반환값이 null로 나오는데 이유를 알 수 있을까요??
 
 
 }
