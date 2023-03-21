@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Getter
@@ -17,7 +20,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne      // 해당 댓글 엔티티 여러개가, 하나의 Artile에 연관됨
+    @ManyToOne(cascade = CascadeType.PERSIST)     // 해당 댓글 엔티티 여러개가, 하나의 Artile에 연관됨
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "article_id")    // article_id 컬럼에 Article의 대표값을 저장
     private Article article;
 
