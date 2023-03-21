@@ -12,7 +12,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Getter
-@ToString
+@ToString(exclude = "article")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comment {
@@ -20,9 +20,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)     // 해당 댓글 엔티티 여러개가, 하나의 Artile에 연관됨
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "article_id")    // article_id 컬럼에 Article의 대표값을 저장
+    @ManyToOne(fetch = FetchType.LAZY)   // 해당 댓글 엔티티 여러개가, 하나의 Artile에 연관됨
+    //@OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn    // article_id 컬럼에 Article의 대표값을 저장
     private Article article;
 
     @Column

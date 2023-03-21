@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-	// PostgreSQL 드라이버 추가!
+    // PostgreSQL 드라이버 추가!
 	runtimeOnly 'org.postgresql:postgresql'
 
 	// Lombok 추가
