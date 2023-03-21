@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,7 +28,10 @@ public class CommentService {
 
 
     public List<CommentDto> comments(Long articleId) {
+////         조회 : 해당 게시글의 댓글 목록
 //        List<Comment> comments = commentRepository.findByArticleId(articleId);
+//
+////        변환 : 엔티티 -> DTO
 //        List<CommentDto> dtos = new ArrayList<CommentDto>();
 //
 //        for (int i = 0; i < comments.size(); i++) {
@@ -35,7 +39,7 @@ public class CommentService {
 //            CommentDto dto = CommentDto.createCommentDto(c);
 //            dtos.add(dto);
 //        }
-
+//
 //        return dtos;
 
         return commentRepository.findByArticleId(articleId)

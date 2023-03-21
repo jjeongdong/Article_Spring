@@ -3,6 +3,7 @@ package com.example.firstproject.api;
 import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.service.CommentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class CommentApiController {
     // 댓글 생성
     @PostMapping("/api/articles/{articleId}/comments")
     public ResponseEntity<CommentDto> create(@PathVariable Long articleId,
-                                             @RequestBody CommentDto dto) {
+                                             @RequestBody CommentDto dto) {     //RequestBody를 통해 dto 변수에 JSON 데이터를 가져옴
 
         CommentDto createdDto = commentService.create(articleId, dto);
 
@@ -39,7 +40,7 @@ public class CommentApiController {
     }
 
     // 댓글 수정
-    @PatchMapping("/api/articles/comments/{id}")
+    @PatchMapping("/api/comments/{id}")
     public ResponseEntity<CommentDto> update(@PathVariable Long id,
                                              @RequestBody CommentDto dto) {
 
@@ -49,7 +50,7 @@ public class CommentApiController {
     }
 
     // 댓글 삭제
-    @DeleteMapping("/api/articles/comments/{id}")
+    @DeleteMapping("/api/comments/{id}")
     public ResponseEntity<CommentDto> update(@PathVariable Long id) {
 
         CommentDto deletedDto = commentService.delete(id);
