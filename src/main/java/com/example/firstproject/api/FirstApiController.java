@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController // RestAPI용 컨트롤러 -> data(JSON) 반환, 일반 컨트틀러 -> view page 반환
 public class FirstApiController {
-
     @GetMapping("api/hello")
     public String hello() {
         return "Hello World";
